@@ -35,16 +35,6 @@ class Pagination
         $this->backward = $backward;
     }
 
-    function getNumberPages() : int
-    {
-        return $this->numberOfPages;
-    }
-
-    function getPage() : int
-    {
-        return $this->currentPage;
-    }
-
     function getFirstPageElement() : int
     {
         $result = ($this->currentPage - 1) * $this->elementsPerPages;
@@ -53,7 +43,7 @@ class Pagination
             $result = $this->numberOfElements - ($result + $this->elementsPerPages);
         }
 
-        return $result + 1;
+        return $result;
     }
 
     function getLast() : int
@@ -69,11 +59,6 @@ class Pagination
         return $result;
     }
 
-    function getElementsPerPages() : int
-    {
-        return $this->elementsPerPages;
-    }
-
     function showPages() : string
     {
         $output = '';
@@ -85,5 +70,25 @@ class Pagination
         }
 
         return $output;
+    }
+
+    function getShowPagesNumber() : int
+    {
+        return $this->showPagesNumber;
+    }
+
+    function getElementsPerPages() : int
+    {
+        return $this->elementsPerPages;
+    }
+
+    function getNumberPages() : int
+    {
+        return $this->numberOfPages;
+    }
+
+    function getPage() : int
+    {
+        return $this->currentPage;
     }
 }
