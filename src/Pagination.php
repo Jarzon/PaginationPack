@@ -35,7 +35,7 @@ class Pagination
         $this->backward = $backward;
     }
 
-    function getFirstPageElement() : int
+    function getFirstPageElement(): int
     {
         $result = ($this->currentPage - 1) * $this->elementsPerPages;
 
@@ -46,7 +46,7 @@ class Pagination
         return $result;
     }
 
-    function getLast() : int
+    function getLast(): int
     {
         $result = ($this->currentPage - 1) * $this->elementsPerPages;
 
@@ -59,7 +59,7 @@ class Pagination
         return $result;
     }
 
-    function showPages() : string
+    function showPages(): string
     {
         $output = '';
         for($current = ($this->currentPage - 3), $stop = ($this->currentPage + $this->showPagesNumber); $current < $stop; ++$current)
@@ -72,22 +72,27 @@ class Pagination
         return $output;
     }
 
-    function getShowPagesNumber() : int
+    function geNumberOfElements(): int
+    {
+        return $this->numberOfElements;
+    }
+
+    function getShowPagesNumber(): int
     {
         return $this->showPagesNumber;
     }
 
-    function getElementsPerPages() : int
+    function getElementsPerPages(): int
     {
         return $this->elementsPerPages;
     }
 
-    function getNumberPages() : int
+    function getNumberPages(): int
     {
         return $this->numberOfPages;
     }
 
-    function getPage() : int
+    function getPage(): int
     {
         return $this->currentPage;
     }
