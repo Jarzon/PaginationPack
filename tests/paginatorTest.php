@@ -25,6 +25,22 @@ class PaginatorTest extends TestCase
     /**
      * @depends testGetNumberPages
      */
+    public function testGetFirstShownPage($pagination)
+    {
+        $this->assertEquals(1, $pagination->getFirstShownPage());
+    }
+
+    /**
+     * @depends testGetNumberPages
+     */
+    public function testGetLastShownPage($pagination)
+    {
+        $this->assertEquals(4, $pagination->getLastShownPage());
+    }
+
+    /**
+     * @depends testGetNumberPages
+     */
     public function testGetFirstPageElement($pagination)
     {
         $this->assertEquals(0, $pagination->getFirstPageElement());

@@ -62,17 +62,31 @@ class Pagination
     function showPages(): string
     {
         $output = '';
-        for($current = ($this->currentPage - 3), $stop = ($this->currentPage + $this->showPagesNumber); $current < $stop; ++$current)
+        for($current = $this->getFirstShownPage(); $current < $this->getLastShownPage(); ++$current)
         {
-            if($current < 1 || $current > $this->numberOfPages) continue;
-            else if($current != $this->currentPage) $output .= '<a href="'.$current.'" class="pageNumberLink">'.$current.'</a>';
+            if($current != $this->currentPage) $output .= '<a href="'.$current.'" class="pageNumberLink">'.$current.'</a>';
             else $output .= '<span class="pageNumber">'.$current.'</span>';
         }
 
         return $output;
     }
 
-    function geNumberOfElements(): int
+    function getFirstShownPage(): int
+    {
+        return max(($this->currentPage - $this->showPagesNumber), 1);
+    }
+
+    function getLastShownPage(): int
+    {
+        return min(($this->currentPage + $this->showPagesNumber), $this->numberOfPages);
+    }
+
+    function getLastPage(): int
+    {
+        return ceil($this->numberOfElements / $this->elementsPerPages);
+    }
+
+    function getNumberOfElements(): int
     {
         return $this->numberOfElements;
     }
