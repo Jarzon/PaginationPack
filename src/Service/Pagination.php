@@ -1,14 +1,14 @@
 <?php
-namespace Jarzon;
+namespace PaginationPack\Service;
 
 class Pagination
 {
-    protected $currentPage = 0;
-    protected $numberOfPages = 1;
-    protected $numberOfElements = 1;
-    protected $elementsPerPages = 1;
-    protected $showPagesNumber = 1;
-    protected $backward = false;
+    protected int $currentPage = 0;
+    protected int $numberOfPages = 1;
+    protected int $numberOfElements = 1;
+    protected int $elementsPerPages = 1;
+    protected int $showPagesNumber = 1;
+    protected bool $backward = false;
 
     function __construct(int $currentPage, int $numberOfElements, int $elementsPerPages, int $showPagesNumber = 3, bool $backward = false)
     {

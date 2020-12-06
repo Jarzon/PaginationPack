@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-use \Jarzon\Pagination;
+use \PaginationPack\Service\Pagination;
 
 class PaginatorTest extends TestCase
 {
