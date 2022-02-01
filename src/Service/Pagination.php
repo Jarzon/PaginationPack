@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace PaginationPack\Service;
 
 class Pagination
@@ -12,12 +12,17 @@ class Pagination
 
     function __construct(int $currentPage, int $numberOfElements, int $elementsPerPages, int $showPagesNumber = 3, bool $backward = false)
     {
-        $this->numberOfElements = $numberOfElements;
         $this->elementsPerPages = $elementsPerPages;
         $this->showPagesNumber = $showPagesNumber;
+        $this->setNumberOfElements($numberOfElements);
 
-        $this->numberOfPages = ceil($numberOfElements / $elementsPerPages);
+        $this->setCurrentPage($currentPage);
 
+        $this->backward = $backward;
+    }
+
+    function setCurrentPage(int $currentPage): void
+    {
         $currentPage = intval($currentPage);
         if ($currentPage == 0) {
             $currentPage = 1;
@@ -32,7 +37,13 @@ class Pagination
         }
 
         $this->currentPage = $currentPage;
-        $this->backward = $backward;
+    }
+
+    function setNumberOfElements(int $numberOfElements): void
+    {
+        $this->numberOfElements = $numberOfElements;
+
+        $this->numberOfPages = (int)ceil($numberOfElements / $this->elementsPerPages);
     }
 
     function getFirstPageElement(): int
@@ -83,7 +94,7 @@ class Pagination
 
     function getLastPage(): int
     {
-        return ceil($this->numberOfElements / $this->elementsPerPages);
+        return (int)ceil($this->numberOfElements / $this->elementsPerPages);
     }
 
     function getNumberOfElements(): int
