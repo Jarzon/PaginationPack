@@ -3,22 +3,15 @@ namespace PaginationPack\Service;
 
 class Pagination
 {
-    protected int $currentPage = 0;
-    protected int $numberOfPages = 1;
-    protected int $numberOfElements = 1;
-    protected int $elementsPerPages = 1;
-    protected int $showPagesNumber = 1;
-    protected bool $backward = false;
-
-    function __construct(int $currentPage, int $numberOfElements, int $elementsPerPages, int $showPagesNumber = 3, bool $backward = false)
-    {
-        $this->elementsPerPages = $elementsPerPages;
-        $this->showPagesNumber = $showPagesNumber;
+    function __construct(
+        protected int $currentPage = 0,
+        protected int $numberOfElements = 1,
+        protected int $elementsPerPages = 1,
+        protected int $showPagesNumber = 3,
+        protected bool $backward = false
+    ) {
         $this->setNumberOfElements($numberOfElements);
-
         $this->setCurrentPage($currentPage);
-
-        $this->backward = $backward;
     }
 
     function setCurrentPage(int $currentPage): void
