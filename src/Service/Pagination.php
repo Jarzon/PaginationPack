@@ -3,6 +3,8 @@ namespace PaginationPack\Service;
 
 class Pagination
 {
+    protected int $numberOfPages = 0;
+
     function __construct(
         protected int $currentPage = 0,
         protected int $numberOfElements = 1,
